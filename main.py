@@ -72,7 +72,7 @@ def get_audio():
     CHANNELS = 1
     RATE = 44100
     CHUNK = 1024  # The chunk size defines the length of time for each analysis frame.
-    THRESHOLD = 2000  # Adjust this threshold to fit your environment and microphone sensitivity.
+    THRESHOLD = 1500  # Adjust this threshold to fit your environment and microphone sensitivity.
     SILENCE_LIMIT = 5  # Time in seconds to wait for silence before stopping recording.
 
     p = pyaudio.PyAudio()
@@ -113,16 +113,16 @@ def get_audio():
     stream.close()
     p.terminate()
     audio_data = np.frombuffer(b''.join(frames), dtype=np.int16)
-    file_name = 'record_with_silence.wav'
-    # Save the recorded audio to a file
-# Save the recorded audio to a file
-    with wave.open(file_name, 'wb') as wf:
-        wf.setnchannels(CHANNELS)
-        wf.setsampwidth(p.get_sample_size(FORMAT))
-        wf.setframerate(RATE)
-        wf.writeframes(b''.join(frames))
-
-    print(f"Audio saved as {file_name}")
+#     file_name = 'record_with_silence.wav'
+#     # Save the recorded audio to a file
+# # Save the recorded audio to a file
+#     with wave.open(file_name, 'wb') as wf:
+#         wf.setnchannels(CHANNELS)
+#         wf.setsampwidth(p.get_sample_size(FORMAT))
+#         wf.setframerate(RATE)
+#         wf.writeframes(b''.join(frames))
+#
+#     print(f"Audio saved as {file_name}")
     return audio_data
 
 #will be discarded later
@@ -215,13 +215,16 @@ def process_digit_thai(digits) -> str:
 
 if __name__ == '__main__':
     print(f"There are #{len(result_append)} lines ")
-    soundtrack_instruction = 'soundtrack/X2Download.app - Censor beep sound effect (128 kbps).wav'
+    soundtrack_instruction = 'soundtrack/poodka.wav'
+    soundtrack_stop = 'soundtrack/yoodka.wav'
+
     correct = []
     for i in result_append:
         print(i)
         playsound(soundtrack_instruction)
         voice_recorded = get_audio()
-        audio_visualization(voice_recorded)
+        playsound(soundtrack_stop)
+        #audio_visualization(voice_recorded)
         speech_text = get_text(voice_recorded)
         ref_text = process_digit_thai(i)
         hyp_text = process_text(speech_text)
