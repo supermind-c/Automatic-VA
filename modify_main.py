@@ -337,7 +337,7 @@ if __name__ == '__main__':
         print("=========================================")
         evaluation_score(ref_len=len(ref_text), hyp_len=len(hyp_text), hyp_text=hyp_text, ref_text=ref_text)
         total_score += len(correct)
-        result(_,len(correct))
+        result(len(i),len(correct))
         
     print(f"Score: {total_score}")
     #print(f"Score: {len(correct)}")
