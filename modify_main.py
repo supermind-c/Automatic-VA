@@ -314,19 +314,25 @@ if __name__ == '__main__':
         ref_text = process_digit_thai(i)
         hyp_text = process_text(speech_text)
 
-        while True:
-            repeat_answer(hyp_text)
+        repeat_answer(hyp_text)        
 
+        while True:
+            #repeat_answer(hyp_text)
+            
             res_rec = get_audio()
             res_text = get_text(res_rec)
 
             if (process_user_respond(res_text) == 'ใช่'):
                 break
+                
             elif (process_user_respond(res_text) == 'ไม่'):
                 #playsound()
                 voice_recorded = get_audio()
                 speech_text = get_text(voice_recorded)
                 hyp_text = process_text(speech_text)
+                
+                repeat_answer(hyp_text)
+                
             else:
                 #playsound(เราได้ยินคุณไม่ชัด)
                 pass
