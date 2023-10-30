@@ -23,6 +23,22 @@ img_1 = cv2.imread(im_1_path)
 img_1 = cv2.cvtColor(img_1, cv2.COLOR_BGR2RGB)
 plt.imshow(img_1)
 
+def repeat_answer(number_array):
+    #playsound(คุณพูด ...)
+    for i in number_array:
+        if i == 'หนึ่ง':
+            #playsound()
+        elif i == 'สอง':
+    #playsound(ใช่หรือไม่)
+    
+def get_text_2():
+    #fill the following function - nack
+    #add to dict -  ใช่ ไม่
+    
+def verify_answer():
+    record_yes_no = get_audio()
+    return get_text_2(record_yes_no)
+                
 def overlay_ocr_text(img_path, save_name):
     '''loads an image, recognizes text, and overlays the text on the image.'''
 
@@ -219,15 +235,36 @@ if __name__ == '__main__':
     soundtrack_stop = 'soundtrack/yoodka.wav'
 
     correct = []
-    for i in result_append:
-        print(i)
+    a=yes
+    for i in range(len(result_append)):
+        print(result_append.index(i))
         playsound(soundtrack_instruction)
         voice_recorded = get_audio()
         playsound(soundtrack_stop)
         #audio_visualization(voice_recorded)
         speech_text = get_text(voice_recorded)
-        ref_text = process_digit_thai(i)
+        ref_text = process_digit_thai(result_append.index(i))
         hyp_text = process_text(speech_text)
+        
+        while True:
+            repeat_answer(speech_text)
+            yes_or_no = verify_answer()
+            if (yes_or_no == 'ใช่'):
+                break
+            elif(yes_or_no == 'ไม่'):
+                voice_recorded = get_audio()
+                playsound(soundtrack_stop)
+                #audio_visualization(voice_recorded)
+                speech_text = get_text(voice_recorded)
+                ref_text = process_digit_thai(result_append.index(i))
+                hyp_text = process_text(speech_text)
+                repeat_answer(speech_text)
+                yes_or_no = verify_answer()
+            else:
+                #playsound(เราได้ยินคุณไม่ชัด)
+                repeat_answer(speech_text)
+                yes_or_no = verify_answer()
+                pass
         print(f"Speech text: {speech_text}")
         print(f"hyp_text: {hyp_text}")
         print(f"ref_text: {ref_text}")
