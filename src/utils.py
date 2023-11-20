@@ -58,6 +58,15 @@ def check_score(n,score):
     else :
         return False, (n - score)
 
+def result_score(n, incorrect, line=None):
+    if line == None :
+        line = n
+    base_line = numpy.floor(n/2)
+    if incorrect > base_line:
+        return (line-1), (n - incorrect)
+    else :
+        return line, -incorrect
+
 def result(n, score, line=None) :
     stop, incorrect = check_score(n,score)
     if stop == False :
