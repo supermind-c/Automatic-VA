@@ -19,21 +19,24 @@ class Text_processing():
         return hyp_text
 
     def process_user_respond(self,text_sample: str) ->str:
-        key = ['ใช่','ไม่']
+        #key = ['ใช่','ไม่']
+        key = ['ถูกต้อง','ผิด','ครับ','ค่ะ','คะ','คับ','ใช่','ไม่']
         result = []
         text, *_ = text_sample[0]
         for i, word in enumerate(text_sample.split(" ")):
             if word in key:
                 result.append(word)
         #result = ['ใช่']
-        res_text = ""
-        for i, word in enumerate(result):
-            if(i < (len(result) - 1)):
-                res_text += word + " "
-            else:
-                res_text += word
+        #res_text = ""
+        res_text = []
+        for word in result:
+            # if(i < (len(result) - 1)):
+            #     res_text += word + " "
+            # else:
+            #     res_text += word
+            res_text.append(word)
         #print(f"ASR hypothesis: {hyp_text}")
-        return res_text
+        return ("").join(res_text)
 
     #process digit to thai words
     def process_digit_thai(self,digits) -> str:

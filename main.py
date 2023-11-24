@@ -23,6 +23,9 @@ if __name__ == '__main__':
     #plt.imshow(img_1)
     # print(overlay_ocr_text(im_1_path, '1_carplate'))
 
+    YES = ['ถูกต้อง', 'ถูกต้องครับ', 'ถูกต้องค่ะ','ใช่','ใช่ครับ']
+    NO = ['ผิด', 'ผิดค่ะ', 'ผิดครับ','ไม่ใช่','ไม่','ไม่ใช่ครับ']
+
     for im_path in im_paths:
         result_append = IMG_processor.overlay_ocr_text(im_path, '1_carplate')
         print(result_append)
@@ -31,14 +34,14 @@ if __name__ == '__main__':
         for i in result_append:
             print(i)
             playsound_util(playsound_file_path['initial'])
-            playsound('soundtrack/X2Download.app - Censor beep sound effect (128 kbps).wav')
+            playsound_util(playsound_file_path['beep'])
             voice_recorded = AUDIO_processor.record_audio()
             playsound_util(playsound_file_path['got_your_voice'])
             #audio_visualization(voice_recorded)
             speech_text = SPEECH_processor.get_text(voice_recorded)
 
             ref_text = TEXT_processor.process_digit_thai(i)
-            print(speech_text)
+            #print(speech_text)
             hyp_text = TEXT_processor.process_text(speech_text)
 
             repeat_answer(hyp_text.split(" "))
@@ -49,15 +52,20 @@ if __name__ == '__main__':
 
                 res_rec = AUDIO_processor.record_audio()
                 res_text = SPEECH_processor.get_text(res_rec)
-
-                if (TEXT_processor.process_user_respond(res_text) == 'ใช่'):
+                print(res_text)
+                user_respond = TEXT_processor.process_user_respond(res_text)
+                #debug
+                print(user_respond)
+                print(user_respond in YES, user_respond in NO)
+                playsound_util(playsound_file_path['beep'])
+                if (user_respond in YES):
                     playsound_util(playsound_file_path['prepare'])
                     break
 
-                elif (TEXT_processor.process_user_respond(res_text) == 'ไม่'):
+                elif (user_respond in NO):
                     playsound_util(playsound_file_path['repeat_same_line'])
                     playsound_util(playsound_file_path['initial'])
-                    playsound('soundtrack/X2Download.app - Censor beep sound effect (128 kbps).wav')
+                    playsound_util(playsound_file_path['beep'])
                     voice_recorded = AUDIO_processor.record_audio()
                     speech_text = SPEECH_processor.get_text(voice_recorded)
                     hyp_text = TEXT_processor.process_text(speech_text)

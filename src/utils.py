@@ -61,7 +61,7 @@ def check_score(n,score):
 def result_score(n, incorrect, line=None):
     if line == None :
         line = n
-    base_line = numpy.floor(n/2)
+    base_line = np.floor(n/2)
     if incorrect > base_line:
         return (line-1), (n - incorrect)
     else :
