@@ -2,6 +2,7 @@ import pyaudio
 import audioop
 import matplotlib.pyplot as plt
 import numpy as np
+from src.constants import *
 class Audio_processing():
     def __init__(self):
         pass
@@ -12,7 +13,7 @@ class Audio_processing():
         CHANNELS = 1
         RATE = 44100
         CHUNK = 1024  # The chunk size defines the length of time for each analysis frame.
-        THRESHOLD = 10000  # Adjust this threshold to fit your environment and microphone sensitivity.
+        THRESHOLD = 1500  # Adjust this threshold to fit your environment and microphone sensitivity.
         SILENCE_LIMIT = 5  # Time in seconds to wait for silence before stopping recording.
 
         p = pyaudio.PyAudio()
@@ -23,9 +24,9 @@ class Audio_processing():
                         rate=RATE,
                         input=True,
                         frames_per_buffer=CHUNK)
-
+        
         print("Recording...")
-
+        playsound_util(playsound_file_path['beep'])
         frames = []
         silence_frames = 0
 

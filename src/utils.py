@@ -75,13 +75,20 @@ def result(n, score, line=None) :
 
 
 def repeat_answer(hyp_text):
-    playsound_util(playsound_file_path['you_said'])
-    for i in hyp_text:
-        play_num_sound(i)
-    playsound_util(playsound_file_path['yes_or_no'])
+    print(hyp_text, hyp_text != [''])
+    if hyp_text != ['']:
+        playsound_util(playsound_file_path['you_said'])
+        for i in hyp_text:
+            play_num_sound(i)
+        playsound_util(playsound_file_path['yes_or_no'])
+    else:
+        playsound_util(playsound_file_path['cannot_catch'])
 
 def play_num_sound(num):
-    playsound_util(playsound_file_path[f'{num}'])
+    try:
+        playsound_util(playsound_file_path[f'{num}'])
+    except:
+        print("คุณไม่ได้พูดจ้า")
     # key = ['หนึ่ง','สอง','สาม','สี่','ห้า','หก','เจ็ด','แปด','เก้า']
     # if num == key[0]:
     #     playsound_util(playsound_file_path['หนึ่ง'])
