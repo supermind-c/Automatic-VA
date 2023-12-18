@@ -33,5 +33,6 @@ if __name__ == '__main__':
         speech_text = SPEECH_processor.get_text(voice_recorded)
         hyp_text = TEXT_processor.process_text(speech_text)
         accuracy.append(hyp_text == i)
+        print(hyp_text == i)
     print(f"Speech to Text Accuracy: {(sum(accuracy)/len(accuracy)) * 100} %")
         

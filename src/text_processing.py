@@ -40,9 +40,13 @@ class Text_processing():
 
     #process digit to thai words
     def process_digit_thai(self,digits) -> str:
+        print(digits)
         digits = str(digits).strip()
         result_gathering = []
         digit_dict = {"1":'หนึ่ง',"2":'สอง',"3":'สาม',"4":'สี่',"5":'ห้า',"6":'หก',"7":'เจ็ด',"8":'แปด',"9":'เก้า'}
+        print(digits)
         for i_ in digits:
-            result_gathering.append(digit_dict.get(i_,'0'))
-        return " ".join(result_gathering)
+            result_gathering.append(digit_dict.get(i_,''))
+        print(result_gathering)
+        print(" ".join(result_gathering))
+        return " ".join(result_gathering).strip()

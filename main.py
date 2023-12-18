@@ -29,12 +29,15 @@ if __name__ == '__main__':
     num_pic = 2
     total_pic = 0
     conclude_score = []
+    log_interact = []
+    log_interact.append("====== Initialize the program ======")
     result_global = ""
     change_page=True
     playsound_util(playsound_file_path['welcome'])
     time.sleep(1)
     
     for i in range(num_pic):
+        log_interact.append(f"Testing with picture #{i+1}")
         playsound_util(playsound_file_path['process_pic'])
         result_append = IMG_processor.return_ocr_result()
         #result_append = [['6', '5'], ['2', '3', '9']]
@@ -57,7 +60,8 @@ if __name__ == '__main__':
             ref_text = TEXT_processor.process_digit_thai(i)
             #print(speech_text)
             hyp_text = TEXT_processor.process_text(speech_text)
-    
+            log_interact.append(f"Model seen: {ref_text}")
+            log_interact.append(f"User Response: {hyp_text}")
             repeat_answer(hyp_text.split(" "))
             correct_test = 0
             #playsound_util(playsound_file_path['beep'])
@@ -72,7 +76,8 @@ if __name__ == '__main__':
                 ref_text = TEXT_processor.process_digit_thai(i)
                 #print(speech_text)
                 hyp_text = TEXT_processor.process_text(speech_text)
-        
+                log_interact.append(f"Model Can not interpret the voice and ask user to answer again")
+                log_interact.append(f"User Response: {hyp_text}")
                 repeat_answer(hyp_text.split(" "))
                 
             while True:
@@ -85,8 +90,10 @@ if __name__ == '__main__':
                 print(user_respond)
                 print(user_respond in YES, user_respond in NO)
                 #playsound_util(playsound_file_path['beep'])
+                log_interact.append(f"Model Confirm User's answer")
                 
                 if (user_respond in YES):
+                    log_interact.append(f"User Response: {user_respond}")
                     if count_line != len(result_append):
                         # playsound_util(playsound_file_path['prepare'])
                         playsound_util(playsound_file_path['next_line'])
@@ -94,16 +101,20 @@ if __name__ == '__main__':
                     break
     
                 elif (user_respond in NO):
+                    log_interact.append(f"User Response: {user_respond}")
+                    log_interact.append(f"Model asks user to answer again")
                     playsound_util(playsound_file_path['repeat_same_line'])
                     playsound_util(playsound_file_path['initial'])
                     voice_recorded = AUDIO_processor.record_audio()
                     #playsound_util(playsound_file_path['beep'])
                     speech_text = SPEECH_processor.get_text(voice_recorded)
                     hyp_text = TEXT_processor.process_text(speech_text)
+                    log_interact.append(f"User Response: {hyp_text}")
                     #playsound_util(playsound_file_path['got_your_voice'])
                     repeat_answer(hyp_text.split(" "))
                     
                     while hyp_text == ['']:
+                        log_interact.append(f"Model Can not interpret the voice and ask user to answer again")
                         voice_recorded = AUDIO_processor.record_audio()
                         #playsound_util(playsound_file_path['got_your_voice'])
                         #audio_visualization(voice_recorded)
@@ -112,14 +123,16 @@ if __name__ == '__main__':
                         ref_text = TEXT_processor.process_digit_thai(i)
                         #print(speech_text)
                         hyp_text = TEXT_processor.process_text(speech_text)
+                        log_interact.append(f"User Response: {hyp_text}")
                 
                         repeat_answer(hyp_text.split(" "))        
     
                 else:
+                    log_interact.append(f"Model Can not interpret the voice and ask user to answer again")
                     playsound_util(playsound_file_path['cannot_catch'])
                     playsound_util(playsound_file_path['yes_or_no'])
                     #playsound_util(playsound_file_path['beep'])
-            
+          
             print(f"Speech text: {speech_text}")
             print(f"hyp_text: {hyp_text}")
             print(f"ref_text: {ref_text}")
@@ -131,6 +144,7 @@ if __name__ == '__main__':
             result_global = resultg
         if total_pic != num_pic:
             playsound_util(playsound_file_path['change_pic'])
+            log_interact.append(f"Changing Picture")
         time.sleep(5)
         
     playsound_util(playsound_file_path['end_of_process'])
@@ -170,3 +184,6 @@ if __name__ == '__main__':
         le_cc='-',
         le_ccph='-'
     )
+    log_interact.append(f"====== End the program ======")
+    print(log_interact)
+    
