@@ -1,0 +1,27 @@
+====== Initialize the program ======
+Testing with picture #1
+Model seen: หก แปด
+User Response: หก แปด
+Model Confirm User's answer
+User Response: ใช่
+Model seen: สอง สาม เก้า
+User Response: สอง สาม เก้า
+Model Confirm User's answer
+Model Can not interpret the voice and ask user to answer again
+Model Confirm User's answer
+User Response: ใช่ครับ
+Changing Picture
+Testing with picture #2
+Model seen: สาม ห้า สอง
+User Response: สาม ห้า สอง
+Model Confirm User's answer
+User Response: ไม่ใช่
+Model asks user to answer again
+User Response: สาม ห้า สอง
+Model Confirm User's answer
+User Response: ใช่
+Model seen: เก้า สอง หก เก้า
+User Response: เก้า สอง หก เก้า
+Model Confirm User's answer
+User Response: ใช่
+====== End the program ======

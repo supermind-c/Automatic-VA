@@ -4,7 +4,7 @@ class Text_processing():
     def process_text(self,text_sample: str) -> str:
         key = ['หนึ่ง','สอง','สาม','สี่','ห้า','หก','เจ็ด','แปด','เก้า']
         result = []
-        text, *_ = text_sample[0]
+        #text, *_ = text_sample[0]
         for i, word in enumerate(text_sample.split(" ")):
             if word in key:
                 result.append(word)
@@ -22,7 +22,7 @@ class Text_processing():
         #key = ['ใช่','ไม่']
         key = ['ถูกต้อง','ผิด','ครับ','ค่ะ','คะ','คับ','ใช่','ไม่']
         result = []
-        text, *_ = text_sample[0]
+        #text, *_ = text_sample[0]
         for i, word in enumerate(text_sample.split(" ")):
             if word in key:
                 result.append(word)
@@ -40,8 +40,9 @@ class Text_processing():
 
     #process digit to thai words
     def process_digit_thai(self,digits) -> str:
+        
+        digits = [element for element in digits if element != ""]
         print(digits)
-        digits = str(digits).strip()
         result_gathering = []
         digit_dict = {"1":'หนึ่ง',"2":'สอง',"3":'สาม',"4":'สี่',"5":'ห้า',"6":'หก',"7":'เจ็ด',"8":'แปด',"9":'เก้า'}
         print(digits)

@@ -185,5 +185,6 @@ if __name__ == '__main__':
         le_ccph='-'
     )
     log_interact.append(f"====== End the program ======")
-    print(log_interact)
+    write_log(log_interact)
+    
     

@@ -174,3 +174,15 @@ def write_va_result_to_file(re_sc, re_scph, re_cc, re_ccph, le_sc, le_scph, le_c
     
     print(f"Visual Acuity Test result written to {filename}")
     
+def write_log(list_of_log):
+    list_as_string = '\n'.join([str(elem) for elem in list_of_log])
+    current_datetime = datetime.now()
+    date = current_datetime.strftime("%d/%m/%Y")
+    time = current_datetime.strftime("%H:%M")
+    
+    modified_date = date.replace('/', '_')
+    modified_time = time.replace(':', '_')
+    
+    with open(f"log_results/log_{modified_date}_{modified_time}.txt", "w") as output:
+        output.write(list_as_string)
+    

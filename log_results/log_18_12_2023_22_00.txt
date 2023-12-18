@@ -1,0 +1,11 @@
+====== Initialize the program ======
+Testing with picture #1
+Model seen: หก แปด
+User Response: หก แปด
+Model Confirm User's answer
+User Response: ใช่
+Model seen: สอง สาม เก้า
+User Response: สอง สาม เก้า
+Model Confirm User's answer
+User Response: ใช่
+====== End the program ======

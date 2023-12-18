@@ -1,11 +1,11 @@
-18/12/2023	15:37
+18/12/2023	20:41
 
 [ VA result ]
 
 At distance : 3 meter
 
 Right eye test
-RE-sc :	20/50
+RE-sc :	20/100
 RE-SCPH :	-
 RE-CC :	-
 RE-CCPH :	-
@@ -15,7 +15,7 @@ RE-CCPH :	-
 At distance : 3 meter
 
 Left eye test
-LE-sc :	20/50
+LE-sc :	20/100
 LE-SCPH :	-
 LE-CC :	-
 LE-CCPH :	-
