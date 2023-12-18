@@ -17,7 +17,12 @@ playsound_file_path = {
     'cannot_catch' : 'soundtrack/11.เราได้ยินคุณไม่ชัดกรุณาพ.wav',
     'got_your_voice' : 'soundtrack/2.ได้รับข้อมูลเสียงแล้วค่ะ.wav',
     'you_said' : 'soundtrack/9.คุณพูด.wav',
-    'end_of_process' : 'soundtrack/1.สิ้นสุดกระบวนการวัดค่าสา.wav'
+    'end_of_process' : 'soundtrack/1.สิ้นสุดกระบวนการวัดค่าสา.wav',
+    'process_pic':'soundtrack/Process pic.wav',
+    'change_pic':'soundtrack/Change pic.wav',
+    'welcome':'soundtrack/1.สวัสดีค่ะคุณกำลังเข้าสู่.wav',
+    'first_line':'soundtrack/เริ่มพูดบรรทัดแรกได้เลยค.wav',
+    'next_line':'soundtrack/เริ่มพูดบรรทัดถัดไปได้เล.wav'
 }
 
 def playsound_util(path):
