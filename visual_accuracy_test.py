@@ -11,7 +11,7 @@ if __name__ == '__main__':
     accuracy = []
     ground_truth = []
     # Open the file
-    with open('/Users/printfnack/Desktop/Automatic-VA/model_accuracy_test/ground_truth_label/gTruth.txt', 'r') as file:
+    with open('model_accuracy_test\ground_truth_label\gTruth.txt', 'r') as file:
         # Read the lines
         lines = file.readlines()
 

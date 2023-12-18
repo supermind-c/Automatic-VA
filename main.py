@@ -64,7 +64,7 @@ if __name__ == '__main__':
             count_line += 1
             while hyp_text == '':
                 voice_recorded = AUDIO_processor.record_audio()
-                #playsound_util(playsound_file_path['got_your_voice'])
+                #playsound_util(playsound_file_p                                                ath['got_your_voice'])
                 #audio_visualization(voice_recorded)
                 print("TEST SI")
                 speech_text = SPEECH_processor.get_text(voice_recorded)
